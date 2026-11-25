@@ -1,0 +1,23 @@
+\section{Ekrany i nawigacja}\label{sec:nawigacja}
+
+\subsection{Lista ekranów}
+\begin{table}[H]\centering
+\caption{Ekrany aplikacji}\label{tab:ekrany}
+\begin{tabularx}{\linewidth}{@{}p{0.6cm}p{3.6cm}Lp{3.4cm}@{}}
+\naglowektabeli \nt{\#} & \nt{Ekran} & \nt{Do czego służy} & \nt{Przejścia do} \\
+E1 & Start & oś nawigacji: wybór zadania & E2, E5 \\
+E2 & Lista sal & lista sal z filtrem: data, godziny, liczba osób & E3, E1 \\
+E3 & Szczegóły sali & plan dnia i wyposażenie sali & E4, E2 \\
+E4 & Rezerwacja & formularz rezerwacji z walidacją & E6, E3 \\
+E5 & Moje rezerwacje & lista własnych rezerwacji, anulowanie & E1 \\
+E6 & Potwierdzenie & podsumowanie rezerwacji & E5 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Mapa ekranów}
+\zrzut{mapa_ekranow.png}{Mapa ekranów i przejść (linia ciągła: dalej, przerywana: powrót)}{0.95}
+
+\subsection{Model nawigacji}
+\textbf{Model:} oś i szprychy.\\
+\textbf{Uzasadnienie:} Start to oś, a szprychy to dwa zadania: wyszukanie i rezerwacja sali oraz przegląd własnych rezerwacji. Pasuje on do użytkownika, ponieważ ma on jeden cel, więc po każdym zadaniu chce wrócić na start, a nie poznawać strukturę ekranów.

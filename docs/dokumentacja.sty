@@ -1,0 +1,276 @@
+% Styl dokumentacji projektu grupowego - MOIU, UKEN 2026/27 (wersja czarno-biała)
+% Nie trzeba go zmieniać. Dane projektu wpisuje się w pliku dokumentacja.tex.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{dokumentacja}[2026/10/08 Dokumentacja projektu MOIU]
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{times} % Times (tekst)
+\renewcommand{\ttdefault}{lmtt}
+\RequirePackage{polski}
+\DeclareUnicodeCharacter{2192}{\ensuremath{\rightarrow}}
+\RequirePackage[a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm,headheight=14pt]{geometry}
+\RequirePackage{microtype}
+\RequirePackage[table]{xcolor}
+\RequirePackage{graphicx}
+\RequirePackage{array,booktabs,tabularx,longtable,multirow}
+\RequirePackage{enumitem}
+\RequirePackage{titlesec}
+\RequirePackage{fancyhdr}
+\RequirePackage{lastpage}
+\RequirePackage{framed}
+\RequirePackage{amssymb}
+\RequirePackage{pifont}
+\RequirePackage{etoolbox}
+\RequirePackage{environ}
+\RequirePackage{float}
+\RequirePackage[font=small,labelfont=bf,labelsep=period]{caption}
+\RequirePackage{listings}
+\RequirePackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,calc,shapes.geometric}
+\RequirePackage[titles]{tocloft}
+\RequirePackage[hidelinks,bookmarksnumbered,bookmarksopen]{hyperref}
+
+% odcienie szarości (dokument czarno-biały)
+\definecolor{dkczarny}{gray}{0}
+\definecolor{dkszary}{gray}{0.35} % tekst pomocniczy
+\definecolor{dkramka}{gray}{0.6} % ramki, linie
+\definecolor{dkjasny}{gray}{0.94} % tła
+\definecolor{dknaglowek}{gray}{0.86} % nagłówki tabel
+% nazwy zgodne z wcześniejszą wersją szablonu
+\colorlet{dkgl}{dkczarny}
+\colorlet{dkgranat}{dkczarny}
+\colorlet{dkstal}{dkczarny}
+
+% przełączniki
+% W dokumentacja.tex: \pokazinstrukcjetrue (szablon) albo \pokazinstrukcjefalse (wersja do oddania).
+\newif\ifpokazinstrukcje
+\pokazinstrukcjetrue
+% W dokumentacja.tex: \niestacjonarnetrue tylko na studiach niestacjonarnych.
+\newif\ifniestacjonarne
+\niestacjonarnefalse
+
+% tekst do uzupełnienia
+\newcommand{\wpisz}[1]{\textcolor{dkszary}{\textit{[#1]}}}
+
+% dane projektu (ustawiane w dokumentacja.tex)
+\newcommand{\dk@pole}[2]{%
+  \expandafter\newcommand\csname #1\endcsname[1]{\expandafter\gdef\csname dk@#1\endcsname{##1}}%
+  \expandafter\gdef\csname dk@#1\endcsname{#2}}
+\dk@pole{uczelnia}{Uniwersytet Komisji Edukacji Narodowej w Krakowie}
+\dk@pole{wydzial}{}
+\dk@pole{instytut}{Instytut Nauk Technicznych}
+\dk@pole{kierunek}{Informatyka Stosowana}
+\dk@pole{przedmiot}{Metody opracowywania interfejsów użytkownika}
+\dk@pole{prowadzaca}{mgr inż. Aleksandra Olszyńska}
+\dk@pole{rokakademicki}{2026/2027}
+\dk@pole{semestr}{5}
+\dk@pole{nazwaprojektu}{\wpisz{nazwa projektu}}
+\dk@pole{podtytulprojektu}{\wpisz{podtytuł}}
+\dk@pole{tematprojektu}{\wpisz{temat}}
+\dk@pole{nazwazespolu}{\wpisz{nazwa zespołu}}
+\dk@pole{numerzespolu}{\wpisz{nr}}
+\dk@pole{grupalab}{\wpisz{grupa}}
+\dk@pole{repozytorium}{\wpisz{adres repozytorium}}
+\dk@pole{technologia}{\wpisz{technologia}}
+\dk@pole{wersjadokumentu}{\wpisz{wersja}}
+\dk@pole{dataoddania}{\wpisz{data}}
+\newcommand{\dkpokaz}[1]{\csname dk@#1\endcsname}
+
+% skład zespołu: \osoba{imię i nazwisko}{nr albumu}{rola w projekcie}
+\newcommand{\dk@osoby}{}
+\newcommand{\dk@autorzy}{}
+\newcommand{\osoba}[3]{%
+  \gappto\dk@osoby{#1 & #2 & #3 \\}%
+  \gappto\dk@autorzy{#1 & nr albumu: #2 \\}}
+
+% akapity, listy
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\linespread{1.1}
+\setlist{itemsep=2pt,topsep=3pt,parsep=0pt}
+\setlist[itemize]{label=\textbullet,leftmargin=1.5em}
+\setlist[enumerate]{label=\arabic*.,leftmargin=1.7em}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+% nagłówki rozdziałów
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.6em}{}
+\pretocmd{\section}{\dk@miejsce{7cm}}{}{}
+\titlespacing*{\section}{0pt}{22pt}{8pt}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.6em}{}
+\titlespacing*{\subsection}{0pt}{14pt}{4pt}
+\titleformat{\subsubsection}{\normalsize\bfseries\itshape}{\thesubsubsection.}{0.6em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+
+% spis treści
+\renewcommand{\cfttoctitlefont}{\Large\bfseries}
+\renewcommand{\cftloftitlefont}{\Large\bfseries}
+\renewcommand{\cftlottitlefont}{\Large\bfseries}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsecaftersnum}{.}
+\renewcommand{\cftsubsecaftersnum}{.}
+\setlength{\cftbeforesecskip}{5pt}
+
+% nagłówek i stopka strony
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead[L]{\small\itshape\dkpokaz{nazwaprojektu}}
+\fancyhead[R]{\small\itshape Zespół \dkpokaz{numerzespolu}, \dkpokaz{grupalab}}
+\fancyfoot[L]{\small\dkpokaz{przedmiot} -- dokumentacja projektu}
+\fancyfoot[R]{\small\thepage{} / \pageref{LastPage}}
+\fancypagestyle{plain}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}\fancyfoot[R]{\small\thepage{} / \pageref{LastPage}}}
+
+% ramki
+% instrukcja dla zespołu (znika po \pokazinstrukcjefalse)
+% \begin{instrukcja}[wymagane|zalecane] ... \end{instrukcja}
+\newcommand{\dk@etykieta}[1]{%
+  \ifstrequal{#1}{wymagane}{\fbox{\scriptsize\bfseries WYMAGANE - OCENIANE}}{%
+  \ifstrequal{#1}{zalecane}{\fbox{\scriptsize ZALECANE}}{\fbox{\scriptsize #1}}}}
+% przejście na nową stronę, gdy zostało mniej niż #1 miejsca
+\newcommand{\dk@miejsce}[1]{\par\begingroup
+  \dimen@=#1\relax\dimen@ii=\pagegoal\advance\dimen@ii-\pagetotal
+  \ifdim\dimen@>\dimen@ii\ifdim\dimen@ii>\z@\newpage\fi\fi\endgroup}
+\NewEnviron{instrukcja}[1][]{%
+  \ifpokazinstrukcje
+    \dk@miejsce{4.5cm}%
+    \def\FrameCommand{\fboxsep=7pt\fcolorbox{dkramka}{dkjasny}}%
+    \MakeFramed{\advance\hsize-\width\FrameRestore}\small
+    {\bfseries Instrukcja}\ifstrempty{#1}{}{\hfill\dk@etykieta{#1}}\par\smallskip
+    \BODY
+    \endMakeFramed
+  \fi}
+
+% ramka wyróżniająca (zostaje w wersji do oddania)
+\newenvironment{ramka}[1]{%
+  \def\FrameCommand{\fboxsep=7pt\fcolorbox{dkczarny}{white}}%
+  \MakeFramed{\advance\hsize-\width\FrameRestore}\small
+  {\bfseries #1}\par\smallskip}
+ {\endMakeFramed}
+
+% tabele
+\newcommand{\naglowektabeli}{\toprule\rowcolor{dknaglowek}}
+\newcommand{\nt}[1]{\small\bfseries #1}
+\renewcommand{\arraystretch}{1.3}
+
+% status w tabelach
+\newcommand{\tak}{\ding{51}\,tak}
+\newcommand{\czesciowo}{$\pm$\,częściowo}
+\newcommand{\nie}{\ding{55}\,nie}
+
+% rysunki
+% \zrzut{plik w obrazy/}{podpis}{szerokość jako ułamek \linewidth}
+% jeśli pliku jeszcze nie ma, rysuje się puste pole z nazwą pliku
+\newcommand{\zrzut}[3]{%
+  \begin{figure}[H]\centering
+  \IfFileExists{obrazy/#1}{\fbox{\includegraphics[width=#3\linewidth]{obrazy/#1}}}{%
+    \begin{tikzpicture}
+      \node[draw=dkramka,line width=0.6pt,dashed,fill=dkjasny,
+            minimum width=#3\linewidth,minimum height=0.42*#3\linewidth,align=center,
+            font=\small\color{dkszary}]
+           {miejsce na zrzut ekranu\\[2pt]\texttt{obrazy/\detokenize{#1}}};
+    \end{tikzpicture}}
+  \caption{#2}\label{rys:#1}
+  \end{figure}}
+
+% style do mapy ekranów (TikZ)
+\tikzset{
+  ekran/.style={draw=black,line width=0.7pt,fill=white,rounded corners=2pt,
+    font=\small,align=center,minimum width=2.9cm,minimum height=1.1cm},
+  ekranglowny/.style={ekran,line width=1.4pt,font=\small\bfseries},
+  przejscie/.style={-{Stealth[length=2.4mm]},line width=0.6pt,color=black},
+  powrot/.style={przejscie,dashed},
+  opis/.style={font=\scriptsize\itshape,fill=white,inner sep=1.5pt},
+}
+
+% kod
+\lstset{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\bfseries,
+  commentstyle=\color{dkszary}\itshape,
+  stringstyle=\color{dkczarny},
+  numberstyle=\tiny\color{dkszary},
+  backgroundcolor=\color{dkjasny},
+  frame=single,rulecolor=\color{dkramka},framerule=0.4pt,
+  xleftmargin=6pt,xrightmargin=6pt,framexleftmargin=4pt,
+  breaklines=true,columns=fullflexible,keepspaces=true,
+  showstringspaces=false,tabsize=2,
+  literate={ą}{{\k{a}}}1 {ć}{{\'c}}1 {ę}{{\k{e}}}1 {ł}{{\l{}}}1 {ń}{{\'n}}1
+           {ó}{{\'o}}1 {ś}{{\'s}}1 {ź}{{\'z}}1 {ż}{{\.z}}1
+           {Ą}{{\k{A}}}1 {Ć}{{\'C}}1 {Ę}{{\k{E}}}1 {Ł}{{\L{}}}1 {Ń}{{\'N}}1
+           {Ó}{{\'O}}1 {Ś}{{\'S}}1 {Ź}{{\'Z}}1 {Ż}{{\.Z}}1 {→}{{$\rightarrow$}}1,
+}
+\lstdefinelanguage{json}{morestring=[b]"}
+\lstdefinestyle{konsola}{backgroundcolor=\color{white},rulecolor=\color{black}}
+
+% tabele z danymi projektu (metryczka)
+\newcommand{\tabeladanych}{%
+  \ifdefempty{\dk@repozytorium}{\def\dk@wierszrepo{}}{\def\dk@wierszrepo{Repozytorium & \dkpokaz{repozytorium} \\}}%
+  \begin{tabularx}{\linewidth}{@{}>{\bfseries}p{4.2cm}L@{}}
+  \toprule
+  Nazwa projektu & \dkpokaz{nazwaprojektu} \\
+  Temat & \dkpokaz{tematprojektu} \\
+  Zespół & nr \dkpokaz{numerzespolu}\ifdefempty{\dk@nazwazespolu}{}{, \dkpokaz{nazwazespolu}} \\
+  Grupa laboratoryjna & \dkpokaz{grupalab} \\
+  Prowadząca & \dkpokaz{prowadzaca} \\
+  \dk@wierszrepo
+  Technologia & \dkpokaz{technologia} \\
+  Wersja dokumentu & \dkpokaz{wersjadokumentu} \\
+  Data oddania & \dkpokaz{dataoddania} \\
+  \bottomrule
+  \end{tabularx}}
+\newcommand{\tabelaskladu}{%
+  \begin{tabularx}{\linewidth}{@{}p{5.2cm}p{2.6cm}L@{}}
+  \naglowektabeli \nt{Imię i nazwisko} & \nt{Nr albumu} & \nt{Rola w projekcie} \\
+  \dk@osoby
+  \bottomrule
+  \end{tabularx}}
+
+% strona tytułowa
+\newcommand{\stronatytulowa}{%
+  \begin{titlepage}
+  \thispagestyle{empty}
+  \centering
+  {\large\bfseries\MakeUppercase{\dkpokaz{uczelnia}}\par}
+  \vspace{6pt}
+  \ifdefempty{\dk@wydzial}{}{{\large \dkpokaz{wydzial}\par}\vspace{3pt}}
+  {\large \dkpokaz{instytut}\par}
+  \vspace{10pt}
+  \rule{0.55\linewidth}{0.4pt}\par
+  \vspace{10pt}
+  {Kierunek: \dkpokaz{kierunek}\par}
+  \vspace{2pt}
+  {Studia I stopnia \ifniestacjonarne niestacjonarne\else stacjonarne\fi\par}
+
+  \vspace{3.2cm}
+  {\Large\bfseries DOKUMENTACJA PROJEKTU\par}
+  \vspace{14pt}
+  {\LARGE\bfseries \dkpokaz{nazwaprojektu}\par}
+  \vspace{8pt}
+  {\large\itshape \dkpokaz{podtytulprojektu}\par}
+  \vspace{14pt}
+  {przedmiot: \dkpokaz{przedmiot}\par}
+
+  \vspace{2.4cm}
+  {\bfseries Zespół nr \dkpokaz{numerzespolu}\ifdefempty{\dk@nazwazespolu}{}{: \dkpokaz{nazwazespolu}}\par}
+  \vspace{6pt}
+  {\renewcommand{\arraystretch}{1.25}%
+   \begin{tabular}{rl}\dk@autorzy\end{tabular}\par}
+
+  \vfill
+  \begin{flushright}
+  \renewcommand{\arraystretch}{1.25}%
+  \begin{tabular}{@{}l@{}}
+  Semestr \dkpokaz{semestr}, rok akademicki \dkpokaz{rokakademicki} \\
+  Grupa laboratoryjna: \dkpokaz{grupalab} \\
+  Prowadząca: \dkpokaz{prowadzaca} \\
+  \end{tabular}
+  \end{flushright}
+
+  \vspace{1.6cm}
+  {Kraków, \dkpokaz{dataoddania}\par}
+  \end{titlepage}}

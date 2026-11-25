@@ -1,0 +1,41 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{dokumentacja}
+
+\nazwaprojektu{Sale do nauki}
+\podtytulprojektu{Aplikacja, w której student znajduje wolną salę na konkretną godzinę i ją rezerwuje}
+\tematprojektu{7. Rezerwacja sal do nauki}
+\nazwazespolu{}
+\numerzespolu{7}
+\grupalab{LB2}
+\repozytorium{}
+\technologia{HTML, CSS, JavaScript (bez frameworka)}
+\wersjadokumentu{0.1 - koncepcja i makiety (K1)}
+\dataoddania{25.11.2026}
+
+\osoba{Szymon Nowomiński}{177924}{ekran startowy, nawigacja, lista i szczegóły sali}
+\osoba{Bartosz Ogórek}{177941}{formularz z walidacją, moje rezerwacje, wąski ekran}
+
+\hypersetup{pdftitle={Dokumentacja projektu},pdfsubject={Metody opracowywania interfejsów użytkownika}}
+
+\begin{document}
+
+\stronatytulowa
+
+\input{rozdzialy/00_metryczka}
+
+\tableofcontents
+\listoffigures
+\listoftables
+\newpage
+
+\setcounter{section}{1}
+\input{rozdzialy/02_uzytkownik}
+\setcounter{section}{3}
+\input{rozdzialy/04_nawigacja}
+\setcounter{section}{5}
+\input{rozdzialy/06_wzorce}
+
+\appendix
+\input{rozdzialy/A_zalaczniki}
+
+\end{document}

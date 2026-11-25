@@ -1,0 +1,394 @@
+{
+  "godziny": {
+    "otwarcie": 8,
+    "zamkniecie": 20
+  },
+  "sale": [
+    {
+      "id": "a-101",
+      "budynek": "Budynek A",
+      "numer": "101",
+      "pietro": "parter",
+      "pojemnosc": 6,
+      "wyposazenie": [
+        "tablica",
+        "gniazdka",
+        "Wi-Fi"
+      ],
+      "rezerwacje": [
+        {
+          "dzien": 0,
+          "od": 10,
+          "do": 12
+        },
+        {
+          "dzien": 0,
+          "od": 15,
+          "do": 16
+        },
+        {
+          "dzien": 1,
+          "od": 8,
+          "do": 10
+        }
+      ]
+    },
+    {
+      "id": "a-102",
+      "budynek": "Budynek A",
+      "numer": "102",
+      "pietro": "parter",
+      "pojemnosc": 12,
+      "wyposazenie": [
+        "projektor",
+        "tablica",
+        "gniazdka",
+        "Wi-Fi",
+        "klimatyzacja"
+      ],
+      "rezerwacje": [
+        {
+          "dzien": 0,
+          "od": 8,
+          "do": 11
+        },
+        {
+          "dzien": 0,
+          "od": 13,
+          "do": 15
+        },
+        {
+          "dzien": 1,
+          "od": 12,
+          "do": 14
+        }
+      ]
+    },
+    {
+      "id": "a-204",
+      "budynek": "Budynek A",
+      "numer": "204",
+      "pietro": "1. piętro",
+      "pojemnosc": 4,
+      "wyposazenie": [
+        "tablica",
+        "gniazdka",
+        "Wi-Fi"
+      ],
+      "rezerwacje": [
+        {
+          "dzien": 0,
+          "od": 12,
+          "do": 14
+        },
+        {
+          "dzien": 2,
+          "od": 9,
+          "do": 11
+        }
+      ]
+    },
+    {
+      "id": "a-215",
+      "budynek": "Budynek A",
+      "numer": "215",
+      "pietro": "1. piętro",
+      "pojemnosc": 20,
+      "wyposazenie": [
+        "komputery",
+        "projektor",
+        "tablica",
+        "gniazdka",
+        "Wi-Fi",
+        "klimatyzacja"
+      ],
+      "rezerwacje": [
+        {
+          "dzien": 0,
+          "od": 8,
+          "do": 12
+        },
+        {
+          "dzien": 0,
+          "od": 14,
+          "do": 18
+        },
+        {
+          "dzien": 1,
+          "od": 10,
+          "do": 16
+        }
+      ]
+    },
+    {
+      "id": "a-301",
+      "budynek": "Budynek A",
+      "numer": "301",
+      "pietro": "2. piętro",
+      "pojemnosc": 8,
+      "wyposazenie": [
+        "flipchart",
+        "tablica",
+        "gniazdka",
+        "Wi-Fi"
+      ],
+      "rezerwacje": [
+        {
+          "dzien": 0,
+          "od": 9,
+          "do": 10
+        },
+        {
+          "dzien": 1,
+          "od": 14,
+          "do": 17
+        }
+      ]
+    },
+    {
+      "id": "b-01",
+      "budynek": "Biblioteka",
+      "numer": "B1",
+      "pietro": "parter",
+      "pojemnosc": 5,
+      "wyposazenie": [
+        "stoły grupowe",
+        "gniazdka",
+        "Wi-Fi",
+        "cicha strefa"
+      ],
+      "rezerwacje": [
+        {
+          "dzien": 0,
+          "od": 8,
+          "do": 10
+        },
+        {
+          "dzien": 0,
+          "od": 16,
+          "do": 20
+        },
+        {
+          "dzien": 1,
+          "od": 8,
+          "do": 12
+        }
+      ]
+    },
+    {
+      "id": "b-02",
+      "budynek": "Biblioteka",
+      "numer": "B2",
+      "pietro": "parter",
+      "pojemnosc": 5,
+      "wyposazenie": [
+        "stoły grupowe",
+        "gniazdka",
+        "Wi-Fi",
+        "cicha strefa"
+      ],
+      "rezerwacje": [
+        {
+          "dzien": 0,
+          "od": 11,
+          "do": 13
+        },
+        {
+          "dzien": 1,
+          "od": 15,
+          "do": 18
+        }
+      ]
+    },
+    {
+      "id": "b-12",
+      "budynek": "Biblioteka",
+      "numer": "B12",
+      "pietro": "1. piętro",
+      "pojemnosc": 10,
+      "wyposazenie": [
+        "ekran",
+        "tablica",
+        "gniazdka",
+        "Wi-Fi",
+        "dostęp dla osób z niepełnosprawnościami"
+      ],
+      "rezerwacje": [
+        {
+          "dzien": 0,
+          "od": 10,
+          "do": 14
+        },
+        {
+          "dzien": 2,
+          "od": 8,
+          "do": 12
+        }
+      ]
+    },
+    {
+      "id": "b-20",
+      "budynek": "Biblioteka",
+      "numer": "B20",
+      "pietro": "2. piętro",
+      "pojemnosc": 3,
+      "wyposazenie": [
+        "gniazdka",
+        "Wi-Fi",
+        "cicha strefa"
+      ],
+      "rezerwacje": [
+        {
+          "dzien": 0,
+          "od": 13,
+          "do": 17
+        },
+        {
+          "dzien": 1,
+          "od": 9,
+          "do": 11
+        }
+      ]
+    },
+    {
+      "id": "c-010",
+      "budynek": "Budynek C",
+      "numer": "010",
+      "pietro": "parter",
+      "pojemnosc": 30,
+      "wyposazenie": [
+        "projektor",
+        "ekran",
+        "tablica",
+        "gniazdka",
+        "Wi-Fi",
+        "klimatyzacja",
+        "dostęp dla osób z niepełnosprawnościami"
+      ],
+      "rezerwacje": [
+        {
+          "dzien": 0,
+          "od": 8,
+          "do": 14
+        },
+        {
+          "dzien": 1,
+          "od": 8,
+          "do": 20
+        }
+      ]
+    },
+    {
+      "id": "c-105",
+      "budynek": "Budynek C",
+      "numer": "105",
+      "pietro": "1. piętro",
+      "pojemnosc": 8,
+      "wyposazenie": [
+        "tablica",
+        "gniazdka",
+        "Wi-Fi"
+      ],
+      "rezerwacje": [
+        {
+          "dzien": 0,
+          "od": 8,
+          "do": 9
+        },
+        {
+          "dzien": 0,
+          "od": 17,
+          "do": 19
+        },
+        {
+          "dzien": 2,
+          "od": 13,
+          "do": 16
+        }
+      ]
+    },
+    {
+      "id": "c-112",
+      "budynek": "Budynek C",
+      "numer": "112",
+      "pietro": "1. piętro",
+      "pojemnosc": 6,
+      "wyposazenie": [
+        "flipchart",
+        "tablica",
+        "gniazdka",
+        "Wi-Fi"
+      ],
+      "rezerwacje": [
+        {
+          "dzien": 0,
+          "od": 12,
+          "do": 15
+        },
+        {
+          "dzien": 1,
+          "od": 8,
+          "do": 9
+        }
+      ]
+    },
+    {
+      "id": "c-208",
+      "budynek": "Budynek C",
+      "numer": "208",
+      "pietro": "2. piętro",
+      "pojemnosc": 16,
+      "wyposazenie": [
+        "projektor",
+        "tablica",
+        "gniazdka",
+        "Wi-Fi",
+        "klimatyzacja"
+      ],
+      "rezerwacje": [
+        {
+          "dzien": 0,
+          "od": 9,
+          "do": 13
+        },
+        {
+          "dzien": 1,
+          "od": 13,
+          "do": 15
+        }
+      ]
+    },
+    {
+      "id": "d-03",
+      "budynek": "Budynek D",
+      "numer": "D3",
+      "pietro": "parter",
+      "pojemnosc": 14,
+      "wyposazenie": [
+        "ekran",
+        "flipchart",
+        "gniazdka",
+        "Wi-Fi",
+        "klimatyzacja",
+        "dostęp dla osób z niepełnosprawnościami"
+      ],
+      "rezerwacje": [
+        {
+          "dzien": 0,
+          "od": 8,
+          "do": 10
+        },
+        {
+          "dzien": 0,
+          "od": 18,
+          "do": 20
+        },
+        {
+          "dzien": 1,
+          "od": 11,
+          "do": 13
+        }
+      ]
+    }
+  ]
+}

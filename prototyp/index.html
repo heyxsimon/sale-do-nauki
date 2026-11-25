@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sale do nauki - rezerwacja</title>
+  <link rel="stylesheet" href="wyglad/wyglad.css?wersja=0.0.1">
+</head>
+<body>
+  <a class="pomin" href="#tresc">Przejdź do treści</a>
+
+  <header class="naglowek">
+    <div class="srodek">
+      <a class="logo" href="#/">Sale do nauki</a>
+      <nav aria-label="Główna nawigacja">
+        <a href="#/" data-ekran="start">Start</a>
+        <span class="separator" aria-hidden="true">|</span>
+        <a href="#/sale" data-ekran="sale">Sale</a>
+        <span class="separator" aria-hidden="true">|</span>
+        <a href="#/moje" data-ekran="moje">Moje rezerwacje</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="tresc" tabindex="-1"></main>
+
+  <dialog id="okno" aria-labelledby="tytul-okna">
+    <form method="dialog">
+      <h2 id="tytul-okna">Anulować rezerwację?</h2>
+      <p id="tekst-okna"></p>
+      <div class="przyciski">
+        <button class="przycisk anulowanie" value="tak" id="potwierdz-anulowanie">Anuluj rezerwację</button>
+        <button class="przycisk" value="nie" autofocus>Zostaw rezerwację</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="skrypty/aplikacja.js?wersja=0.0.1"></script>
+</body>
+</html>
